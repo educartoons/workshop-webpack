@@ -5,6 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptmizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const env = require('../config/prod.env');
 
@@ -30,6 +31,7 @@ module.exports = merge(base, {
     }),
     new OptmizeCSSPlugin({
       cssProcessorOptions: { discardComments: { removeAll: true } },
-    })
+    }),
+    new WebpackNotifierPlugin({title: 'Webpack'})
   ]
 });

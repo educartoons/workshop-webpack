@@ -5,6 +5,7 @@ const config = require('./webpack.prod')
 const ora = require('ora')
 const chalk = require('chalk')
 
+
 const spinner = ora('Building for production').start()
 
 webpack(config, function(err, stats){
@@ -21,6 +22,5 @@ webpack(config, function(err, stats){
     chunks: false,
     chunkModules: false
   }))
-
   console.log( chalk.green('Build complete') )
 })
