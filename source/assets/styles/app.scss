@@ -2,4 +2,13 @@ $color: blue;
 
 body{
   background-color: $color;
+  h1{
+    color: #fff;
+  }
+  p{
+    color: green;
+  }
+  h3{
+    color: red;
+  }
 }

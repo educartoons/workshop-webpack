@@ -4,13 +4,22 @@ module.exports = {
   entry: './source/app.js',
   output: {
     filename: 'js/app.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../dist')
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: process.env.NODE_ENV === 'prod'
+            }
+          },
+          'sass-loader'
+        ]
       },
       {
         test: /\.less$/,
@@ -21,21 +30,10 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              babelrc: false,
-              presets: ['@babel/preset-env']
-            }
-
+            loader: 'babel-loader'
           }
         ]
       }
     ]
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 9000,
-    compress: true,
-    open: true
   }
 }
